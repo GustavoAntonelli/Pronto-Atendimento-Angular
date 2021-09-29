@@ -43,6 +43,22 @@ export class AtendimentoService {
     localStorage['atendimentos'] = JSON.stringify(atendimentos); 
   }
 
+  // remover(id: number):void{
+  //   let atendimentos: Atendimento[] = this.listarTodos();
+  //   atendimentos = atendimentos.filter(atendimentos => atendimentos.id !== id);
+  //   localStorage['atendimentos'] = JSON.stringify(atendimentos);
+  // }
+
+  remover(id: number):void{
+    const atendimentos : Atendimento[] = this.listarTodos();
+    atendimentos.forEach((obj, index, objs)=>{
+      if(id === obj.id){
+        objs[index].status = !obj.status;
+      }
+    });
+    localStorage['atendimentos'] = JSON.stringify(atendimentos);
+  }
+
   
 
 

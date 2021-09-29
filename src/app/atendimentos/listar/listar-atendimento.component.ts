@@ -29,4 +29,14 @@ export class ListarAtendimentoComponent implements OnInit {
     }
   }
 
+  remover($event: any, atendimento: Atendimento): void{
+    $event.preventDefault();
+    if(confirm('Deseja remover o paciente "' + atendimento.nome + '"?')){
+      this.atendimentoService.remover(atendimento.id);
+      this.atendimentos = this.listarTodos()
+    }else {
+      this.atendimentos = this.listarTodos();
+    }
+  }
+
 }
